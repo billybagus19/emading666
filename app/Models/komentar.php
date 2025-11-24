@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Komentar extends Model
+{
+    protected $table = 'komentars';
+    protected $primaryKey = 'id_komentar';
+    
+    protected $fillable = [
+        'id_artikel', 'id_user', 'isi_komentar'
+    ];
+
+    public function artikel()
+    {
+        return $this->belongsTo(Artikel::class, 'id_artikel');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+}
